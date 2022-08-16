@@ -3,7 +3,7 @@
 while getopts ":d:" opt; do
   case $opt in
     d)
-      CONTENT="$(/kubeval -d $OPTARG -o stdout --strict true --kubernetes-version master --openshift false --ignore-missing-schemas true)"
+      CONTENT="$(/kubeval -d $OPTARG -o stdout --strict=true --kubernetes-version=master --openshift=false --ignore-missing-schemas=true)"
       CONTENT="${CONTENT//'%'/'%25'}"
       CONTENT="${CONTENT//$'\n'/'%0A'}"
       CONTENT="${CONTENT//$'\r'/'%0D'}"
@@ -15,7 +15,7 @@ while getopts ":d:" opt; do
       exit 1
       ;;
     :)
-      CONTENT="$(/kubeval -d . -o stdout --strict true --kubernetes-version master --openshift false --ignore-missing-schemas true)"
+      CONTENT="$(/kubeval -d "." -o stdout --strict=true --kubernetes-version=master --openshift=false --ignore-missing-schemas=true)"
       CONTENT="${CONTENT//'%'/'%25'}"
       CONTENT="${CONTENT//$'\n'/'%0A'}"
       CONTENT="${CONTENT//$'\r'/'%0D'}"
