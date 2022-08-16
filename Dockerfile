@@ -8,5 +8,5 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 COPY --from=builder /bin/kubeval .
 RUN ln -s /kubeval /usr/local/bin/kubeval
-ENTRYPOINT ["/kubeval"]
+ENTRYPOINT ["entrypoint.sh"]
 CMD ["--help"]
